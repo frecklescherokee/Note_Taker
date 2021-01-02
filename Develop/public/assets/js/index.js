@@ -12,14 +12,14 @@ let noteList;
 
 
 // define the above variables from their classes in notes.html
-//if (window.location.pathname === '/notes') {
+if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
   noteText = document.querySelector('.note-textarea');
   saveNoteBtn = document.querySelector('.save-note');
   newNoteBtn = document.querySelector('.new-note');
   // not sure why this query selector is looking for multiple elements... perhaps to listen for a click or hover?
   noteList = document.querySelectorAll('.list-container .list-group');
-//}
+}
 
 // Show an element - use on the save button when new note has both title and text
 const show = (elem) => {
@@ -90,6 +90,7 @@ const deleteNote = (id) =>
   }
 };
 
+// note save handler
 const handleNoteSave = () => {
   const newNote = {
     title: noteTitle.value,
