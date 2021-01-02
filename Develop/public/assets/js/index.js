@@ -16,7 +16,7 @@ if (window.location.pathname === '/notes') {
   noteText = document.querySelector('.note-textarea');
   saveNoteBtn = document.querySelector('.save-note');
   newNoteBtn = document.querySelector('.new-note');
-  // not sure why this query selector is looking for multiple elements..
+  // not sure why this query selector is looking for multiple elements... perhaps to listen for a click or hover?
   noteList = document.querySelectorAll('.list-container .list-group');
 }
 
@@ -34,6 +34,7 @@ const hide = (elem) => {
 let activeNote = {};
 
 // Route to GET NOTES
+// according to assignment, this should read the db.json file and return all saved notes as JSON
 const getNotes = () =>
   fetch('/api/notes', {
     method: 'GET',
@@ -43,6 +44,10 @@ const getNotes = () =>
   });
 
 // Route to SAVE NOTE
+// according to the assignment, this route should receive a new note to save on the request body,
+// add it to the db.json file and then return the new note to the client.  
+// will need to find a way to give each note a unique id when it's saved
+// look into npm packages that can do this
 const saveNote = (note) =>
   fetch('/api/notes', {
     method: 'POST',
