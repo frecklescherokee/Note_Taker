@@ -1,11 +1,11 @@
 // do this to use express.js
 const express = require('express');
 
-// instantiate a server
-const app = express();
-
 // tell heroku we're using port 3001 instead of the default of 80
 const PORT = process.env.PORT || 3001;
+
+// instantiate a server
+const app = express();
 
 // link to json file where notes are stored
 const { notes } = require('./Develop/db/db.json');
