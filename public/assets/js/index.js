@@ -1,32 +1,23 @@
-// declare variables
-// note title
 let noteTitle;
-// note text
 let noteText;
-// note save button
 let saveNoteBtn;
-// new note button
 let newNoteBtn;
-// note list
 let noteList;
 
-
-// define the above variables from their classes in notes.html
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
   noteText = document.querySelector('.note-textarea');
   saveNoteBtn = document.querySelector('.save-note');
   newNoteBtn = document.querySelector('.new-note');
-  // not sure why this query selector is looking for multiple elements... perhaps to listen for a click or hover?
   noteList = document.querySelectorAll('.list-container .list-group');
 }
 
-// Show an element - use on the save button when new note has both title and text
+// Show an element
 const show = (elem) => {
   elem.style.display = 'inline';
 };
 
-// Hide an element - use on the save button when either note title or text is missing
+// Hide an element
 const hide = (elem) => {
   elem.style.display = 'none';
 };
@@ -34,8 +25,6 @@ const hide = (elem) => {
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
 
-// Route to GET NOTES
-// according to assignment, this should read the db.json file and return all saved notes as JSON
 const getNotes = () =>
   fetch('/api/notes', {
     method: 'GET',
@@ -44,11 +33,6 @@ const getNotes = () =>
     },
   });
 
-// Route to SAVE NOTE
-// according to the assignment, this route should receive a new note to save on the request body,
-// add it to the db.json file and then return the new note to the client.  
-// will need to find a way to give each note a unique id when it's saved
-// look into npm packages that can do this
 const saveNote = (note) =>
   fetch('/api/notes', {
     method: 'POST',
@@ -58,7 +42,6 @@ const saveNote = (note) =>
     body: JSON.stringify(note),
   });
 
-// Route to DELETE NOTE based on a given id
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
     method: 'DELETE',
@@ -67,30 +50,19 @@ const deleteNote = (id) =>
     },
   });
 
-  // hides save button
-  // if activenote exists and has an ID, save title and text into noteTitle and noteText
-  // if no activeNote, reset/clear out ActiveNote's title and text
-  const renderActiveNote = () => {
-  // hide the save button
+const renderActiveNote = () => {
   hide(saveNoteBtn);
-
-  // if the activeNote exists and has an id:
   if (activeNote.id) {
-    // make the title and text read only so they can't be edited
     noteTitle.setAttribute('readonly', true);
     noteText.setAttribute('readonly', true);
-    // set note title and text to ActiveNote's title and text
     noteTitle.value = activeNote.title;
     noteText.value = activeNote.title;
-  } 
-  // if the activeNote doesn't exist or have an id, set the note title and text to ""
-  else {
+  } else {
     noteTitle.value = '';
     noteText.value = '';
   }
 };
 
-// note save handler
 const handleNoteSave = () => {
   const newNote = {
     title: noteTitle.value,
@@ -98,7 +70,6 @@ const handleNoteSave = () => {
   };
   saveNote(newNote).then(() => {
     getAndRenderNotes();
-    // hide the save button and save ActiveNote's title and text into noteTitle and noteText
     renderActiveNote();
   });
 };
@@ -116,8 +87,8 @@ const handleNoteDelete = (e) => {
   }
 
   deleteNote(noteId).then(() => {
+    console.log('hi')
     getAndRenderNotes();
-    // hide the save button and clear the ActiveNote's text and title
     renderActiveNote();
   });
 };
@@ -126,25 +97,19 @@ const handleNoteDelete = (e) => {
 const handleNoteView = (e) => {
   e.preventDefault();
   activeNote = JSON.parse(e.target.parentElement.getAttribute('data-note'));
-  // hide the save button and save ActiveNote's title and text into noteTitle and noteText
   renderActiveNote();
 };
 
 // Sets the activeNote to and empty object and allows the user to enter a new note
 const handleNewNoteView = (e) => {
   activeNote = {};
-  // hide the save button and clear the ActiveNote's text and title
   renderActiveNote();
 };
 
-// if either the note title or text is missing, hide the save button
-// if both note title and text exist, show the save button
 const handleRenderSaveBtn = () => {
   if (!noteTitle.value.trim() || !noteText.value.trim()) {
-    // hide the save note button
     hide(saveNoteBtn);
   } else {
-    // show the save note button
     show(saveNoteBtn);
   }
 };

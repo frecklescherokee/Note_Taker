@@ -1,9 +1,6 @@
-// use in place of 'app', which is only used on server.js
 const router = require("express").Router();
+const noteRoutes = require("./notes.js")
 
-// use the routes in the notes.js file
-const notesRoutes = require("./notes.js")
-router.use(notesRoutes);
+router.use(noteRoutes);
 
-// export the router
 module.exports = router;
