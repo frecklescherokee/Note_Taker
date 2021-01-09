@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # Note-Today
 
@@ -37,3 +38,6 @@ UT Austin Full Stack Developer Bootcamp.
 ## License 
 
 MIT
+=======
+# Note_Taker
+>>>>>>> eb1a428200828e0aab8d831edb6640cf4aaae2be
