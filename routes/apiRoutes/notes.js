@@ -1,7 +1,32 @@
 const router = require("express").Router();
-const { validateNote, createNewNote } = require("../../lib/notes");
-const { notes } = require("../../data/notes");
+//const { validateNote, createNewNote } = require("../../lib/notes");
+const { notes } = require("../../db/db.json");
 const fs = require("fs");
+const path = require("path");
+
+
+function createNewNote(body, noteArray) {
+  const note = body;
+  if (body) {
+  noteArray.push(note);
+  }
+  fs.writeFileSync(
+    path.join(__dirname, "../../db/db.json"),
+    JSON.stringify({ notes: noteArray }, null, 2)
+  );
+
+  return note
+};
+
+function validateNote(note) {
+  if (!note.title || typeof note.title !== "string") {
+    return false;
+  }
+  if (!note.text || typeof note.text !== "string") {
+    return false
+  }
+  return true
+};
 
 router.get("/notes", (req, res) => {
   let results = notes;
@@ -28,10 +53,14 @@ router.delete("/notes/:id", function (req, res) {
   } else {
     res.status(400).send("Note ID not found!");
   }
-  // reformat IDs
-  for (let i = 0; i < notes.length; i++) {
-    notes[i].id = i.toString();
+  // Redo IDs to start from 0 and go up from there which will make assignment of new IDs
+  // not produce duplicates, which will allow specific deletion 
+  let no = 0;
+  function assignNo (note) {
+      note.id = no.toString();
+      no += 1;
   }
+  notes.forEach(assignNo);
   res.json(true);
 });
 

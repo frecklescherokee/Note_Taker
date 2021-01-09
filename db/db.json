@@ -1,0 +1,44 @@
+{
+  "notes": [
+    {
+      "title": "first test",
+      "text": "i bought some apples",
+      "id": "0"
+    },
+    {
+      "title": "buy a hippo",
+      "text": "avoid getting busted by the EPA",
+      "id": "1"
+    },
+    {
+      "title": "acquire a machete",
+      "text": "bamboo is getting thick",
+      "id": "2"
+    },
+    {
+      "title": "write Star Trek novel",
+      "text": "Do something with Data and the Romulans",
+      "id": "3"
+    },
+    {
+      "title": "Study field mice",
+      "text": "note twitchy behaviors\n",
+      "id": "4"
+    },
+    {
+      "title": "Listen to Rap Music",
+      "text": "start with Busta Rhymes",
+      "id": "5"
+    },
+    {
+      "title": "tooth paste",
+      "text": "also buy floss",
+      "id": "6"
+    },
+    {
+      "title": "go bird watching",
+      "text": "birds aren't real",
+      "id": "7"
+    }
+  ]
+}
