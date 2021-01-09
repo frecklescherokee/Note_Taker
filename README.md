@@ -1,43 +1,26 @@
-<<<<<<< HEAD
+# Note Taker
 
-# Note-Today
-
-![GitHub issues](https://img.shields.io/github/issues/CaseyDeriso/Note-Today) ![GitHub pull requests](https://img.shields.io/github/issues-pr/CaseyDeriso/Note-Today) ![license](https://img.shields.io/github/license/CaseyDeriso/Note-Today) ![GitHub Repo stars](https://img.shields.io/github/stars/CaseyDeriso/Note-Today?style=social) ![GitHub package.json version](https://img.shields.io/github/package-json/v/CaseyDeriso/Note-Today)
 
 ## Deployed application
 
-[Link to deployed application](https://arcane-mesa-14449.herokuapp.com/)
+[Link to deployed application](https://sheltered-peak-94160.herokuapp.com//)
 
 ## Description
+Note Taker is an app deployed via Heroku that allows you to record notes with a title and text.  You can delete tasks once completed.
 
-Note today is a note taking application. Add and save notes with the icons in the upper right portion of the nav. This project is built with express.js and is served using heroku. 
 
 ## Table of Contents:
-* [installation](#installation)
 * [usage](#usage)
 * [screenshot](#screenshot)
-* [credits](#credits)
 
-
-## Installation 
-
-There are no development dependencies, however testing the api with insomnia core is helpful.
 
 ## Usage 
+Go to the url and start taking notes.
 
-This project is hosted on the web, navigate to the webpage url and add notes once you click through the homepage. notes are not saved per individual, but all stored on the same database. please keep content PG. 
 
 ## Screenshot
-![Screenshot of Application](./public/assets/imgs/screenshot.jpg)
+![image](https://user-images.githubusercontent.com/71302040/104108988-17524280-528f-11eb-9be9-c85584b8cffb.png)
       
 
-## Credits
-
-UT Austin Full Stack Developer Bootcamp.
-
 ## License 
-
 MIT
-=======
-# Note_Taker
->>>>>>> eb1a428200828e0aab8d831edb6640cf4aaae2be
